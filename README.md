@@ -43,6 +43,28 @@ Pistol Counter includes a minimal scout-defense timing adjustment for **#52** so
 
 Read outputs are deliberately bounded and marked as untrusted playbook content. `commit_play_changes` explicitly requires prior coach confirmation. Variation mode always creates a renamed duplicate and preserves the original.
 
+### Imperative WebMCP registration
+
+Fieldcraft registers its seven tools once from the top-level page with the browser's imperative WebMCP API. Each complete tool object includes a narrow JSON schema and an `execute` function; the production implementation is in [`src/webmcp/fieldcraftTools.ts`](src/webmcp/fieldcraftTools.ts).
+
+```ts
+const controller = new AbortController();
+
+document.modelContext.registerTool({
+  name: "analyze_play",
+  description: "Run deterministic spatial and timing checks for the current play.",
+  inputSchema: {
+    type: "object",
+    properties: { playId: { type: "string" } },
+    required: ["playId"],
+    additionalProperties: false,
+  },
+  execute: async ({ playId }) => analyzePlay(getPlay(playId)),
+}, { signal: controller.signal });
+```
+
+The app uses an `AbortController` to clean up registrations during hot reloads or page teardown.
+
 ## Verify
 
 ```bash
