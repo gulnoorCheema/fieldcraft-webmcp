@@ -611,7 +611,10 @@ button:disabled { cursor: not-allowed; opacity: 0.32; }
 
 .coach-review {
   position: relative;
+  display: grid;
   min-width: 0;
+  min-height: 0;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
   overflow: hidden;
   padding: 13px 16px 12px;
   background: #101210;
@@ -627,8 +630,8 @@ button:disabled { cursor: not-allowed; opacity: 0.32; }
 .review-toggle button { min-width: 58px; height: 27px; padding: 0 9px; border: 0; background: transparent; color: #777b73; cursor: pointer; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; }
 .review-toggle button.active { background: var(--bone); color: var(--ink); }
 .coach-rationale { height: 30px; margin: 9px 0 8px; overflow: hidden; color: #a0a39a; font-size: 9px; line-height: 1.55; }
-.coach-review-body { display: grid; min-height: 74px; grid-template-columns: minmax(0, 1fr) 118px; gap: 12px; }
-.change-list { min-width: 0; border-top: 1px solid #292d28; }
+.coach-review-body { display: grid; min-height: 0; grid-template-columns: minmax(0, 1fr) 118px; gap: 12px; overflow: hidden; }
+.change-list { min-width: 0; min-height: 0; overflow-y: auto; border-top: 1px solid #292d28; scrollbar-color: #444940 transparent; scrollbar-width: thin; }
 .change-row { display: grid; min-width: 0; min-height: 25px; grid-template-columns: 26px minmax(0, 1fr); align-items: center; border-bottom: 1px solid #252924; }
 .change-row span { color: #5f645c; font-size: 7px; }
 .change-row strong { overflow: hidden; color: #c1c4bb; font-size: 8px; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }
@@ -705,8 +708,9 @@ kbd { min-width: 22px; padding: 3px 5px; border: 1px solid #363a34; border-radiu
   .coach-review-title { margin-top: 2px; }
   .coach-review-title strong { font-size: 17px; }
   .coach-rationale { height: 19px; margin: 4px 0; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
-  .coach-review-body { min-height: 51px; grid-template-columns: minmax(0, 1fr) 118px; }
-  .change-row { min-height: 22px; }
+  .coach-review-body { min-height: 0; grid-template-columns: minmax(0, 1fr) 118px; }
+  .change-row { min-height: 18px; }
+  .change-more { padding-top: 3px; }
   .review-actions { margin-top: 4px; padding-top: 4px; }
   .review-playback button { width: 25px; height: 25px; }
   .review-discard, .review-apply { min-height: 27px; }

@@ -10,4 +10,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 The WebMCP layer must remain a shared human-agent workspace, not an embedded chatbot. Keep deterministic spatial evidence separate from model reasoning, stage changes outside the canonical playbook, require visible coach review before commit, and route both UI and site-tool edits through the typed editor command boundary.
 
+The Coach Review action row must remain fully visible at every supported viewport and with the maximum proposal size. Let the change list scroll or condense before allowing Discard or Apply to clip below the workspace.
+
 The New Play flow must offer a Blank Concept path alongside the seeded concepts. A blank concept starts from a named formation and personnel package with all 11 offensive and 11 scout-defense players already positioned, but with no assignments.
