@@ -9,3 +9,5 @@ When implementing from a selected generated mock, treat that image as the source
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
 
 The WebMCP layer must remain a shared human-agent workspace, not an embedded chatbot. Keep deterministic spatial evidence separate from model reasoning, stage changes outside the canonical playbook, require visible coach review before commit, and route both UI and site-tool edits through the typed editor command boundary.
+
+The New Play flow must offer a Blank Concept path alongside the seeded concepts. A blank concept starts from a named formation and personnel package with all 11 offensive and 11 scout-defense players already positioned, but with no assignments.

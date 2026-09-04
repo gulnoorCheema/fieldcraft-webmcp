@@ -78,6 +78,20 @@ const adjustFormation = (formation: string): Player[] => {
     set("o-qb", { x: 14.2, y: 26.65 });
     set("o-hb", { x: 11.3, y: 26.65 });
   }
+  if (formation === "Shotgun") {
+    set("o-qb", { x: 13.2, y: 26.65 });
+    set("o-hb", { x: 13.4, y: 20.8 });
+  }
+  if (formation === "Singleback") {
+    set("o-qb", { x: 15.2, y: 26.65 });
+    set("o-hb", { x: 11.8, y: 26.65 });
+  }
+  if (formation === "Empty") {
+    set("o-qb", { x: 13.2, y: 26.65 });
+    set("o-hb", { x: 16, y: 11.5 });
+    set("o-te", { x: 16.2, y: 37.5 });
+    set("o-slot", { x: 16, y: 43 });
+  }
   if (formation === "Doubles") {
     set("o-slot", { x: 16, y: 42 });
     set("o-te", { x: 16, y: 11.5 });
@@ -236,6 +250,34 @@ export const PLAY_TEMPLATES: Play[] = [
   makePlay("rpo-bubble", "RPO Bubble", "Trips Right", "11 personnel", "rpo"),
   makePlay("rb-screen", "RB Screen", "Gun Bunch", "11 personnel", "screen"),
 ];
+
+export const BLANK_FORMATIONS = ["Pistol", "Shotgun", "Singleback", "Empty"] as const;
+export const PERSONNEL_OPTIONS = ["10 personnel", "11 personnel", "12 personnel", "21 personnel"] as const;
+
+export const makeBlankPlay = (
+  rawName: string,
+  rawFormation: string,
+  rawPersonnel: string,
+): Play => {
+  const name = rawName.trim() || "Untitled Play";
+  const formation = BLANK_FORMATIONS.includes(rawFormation as (typeof BLANK_FORMATIONS)[number])
+    ? rawFormation
+    : "Pistol";
+  const personnel = PERSONNEL_OPTIONS.includes(rawPersonnel as (typeof PERSONNEL_OPTIONS)[number])
+    ? rawPersonnel
+    : "11 personnel";
+
+  return {
+    id: `blank-${Date.now()}`,
+    name,
+    formation,
+    personnel,
+    duration: 4,
+    players: adjustFormation(formation),
+    assignments: [],
+    updatedAt: new Date().toISOString(),
+  };
+};
 
 export const makeInitialPlaybook = (): PlaybookDocument => ({
   schemaVersion: 1,

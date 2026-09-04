@@ -180,6 +180,7 @@ export type EditorCommand =
   | { type: "play.duplicate"; playId: string }
   | { type: "play.delete"; playId: string }
   | { type: "play.createFromTemplate"; templateId: string }
+  | { type: "play.createBlank"; name: string; formation: string; personnel: string }
   | {
       type: "play.applyProposal";
       basePlayId: string;

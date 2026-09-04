@@ -83,6 +83,26 @@ describe("editor command boundary", () => {
     expect(useEditorStore.getState().playbook.plays).toHaveLength(startingCount + 1);
   });
 
+  it("creates a blank 11-on-11 concept without assignments", () => {
+    const startingCount = useEditorStore.getState().playbook.plays.length;
+    dispatchEditorCommand({
+      type: "play.createBlank",
+      name: "Empty Choice",
+      formation: "Empty",
+      personnel: "10 personnel",
+    });
+
+    const state = useEditorStore.getState();
+    const created = state.playbook.plays.find((play) => play.id === state.playbook.selectedPlayId)!;
+    expect(state.playbook.plays).toHaveLength(startingCount + 1);
+    expect(created.name).toBe("Empty Choice");
+    expect(created.formation).toBe("Empty");
+    expect(created.personnel).toBe("10 personnel");
+    expect(created.players.filter((player) => player.team === "offense")).toHaveLength(11);
+    expect(created.players.filter((player) => player.team === "defense")).toHaveLength(11);
+    expect(created.assignments).toEqual([]);
+  });
+
   it("commits a reviewed edit as one atomic undoable command", () => {
     const state = useEditorStore.getState();
     const play = state.playbook.plays.find((item) => item.id === "pistol-counter")!;

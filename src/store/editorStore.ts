@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { buildAgentProposal } from "../coach/proposals";
-import { PLAY_TEMPLATES, makeInitialPlaybook } from "../data/templates";
+import { PLAY_TEMPLATES, makeBlankPlay, makeInitialPlaybook } from "../data/templates";
 import type {
   AgentFocus,
   AgentProposal,
@@ -364,6 +364,12 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         next.plays.push(play);
         next.selectedPlayId = play.id;
       }
+    }
+    if (command.type === "play.createBlank") {
+      next = deepClone(before);
+      const play = makeBlankPlay(command.name, command.formation, command.personnel);
+      next.plays.push(play);
+      next.selectedPlayId = play.id;
     }
     if (command.type === "play.applyProposal") {
       const base = before.plays.find((play) => play.id === command.basePlayId);

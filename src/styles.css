@@ -281,7 +281,7 @@ button:disabled { cursor: not-allowed; opacity: 0.32; }
 }
 
 .rail-add:hover { color: var(--orange); }
-.template-menu { bottom: 10px; left: 84px; width: 260px; padding: 8px; }
+.template-menu { bottom: 10px; left: 84px; width: 292px; max-height: calc(100vh - 92px); overflow-y: auto; padding: 8px; }
 .template-menu-label, .route-menu-label { padding: 9px 10px 8px; color: #777b73; font-size: 9px; letter-spacing: 0.18em; }
 
 .template-menu button {
@@ -298,6 +298,82 @@ button:disabled { cursor: not-allowed; opacity: 0.32; }
 
 .template-menu button:hover { background: #1c1f1b; color: var(--bone); }
 .template-menu small { color: #696d66; font-family: "IBM Plex Mono", monospace; font-size: 8px; }
+
+.template-menu .blank-concept-trigger {
+  align-items: center;
+  min-height: 50px;
+  border: 1px solid #3b3027;
+  background: #15120f;
+  color: var(--bone);
+}
+
+.blank-concept-name { display: inline-flex; align-items: center; gap: 8px; }
+.blank-concept-trigger svg { color: var(--orange); }
+
+.template-menu-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 10px 5px;
+  color: #777b73;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.template-menu-divider::before { width: 18px; height: 1px; background: #343832; content: ""; }
+
+.blank-play-form {
+  padding: 10px;
+  border: 1px solid #3b3027;
+  background: #12140f;
+}
+
+.blank-play-form label {
+  display: grid;
+  gap: 5px;
+  color: #777b73;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.blank-play-form input,
+.blank-play-form select {
+  width: 100%;
+  height: 32px;
+  border: 1px solid #353a34;
+  border-radius: 0;
+  background: #0b0d0b;
+  color: var(--bone);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.blank-play-form input { padding: 0 9px; }
+.blank-play-form select { padding: 0 6px; }
+.blank-play-form input:focus,
+.blank-play-form select:focus { border-color: var(--orange); }
+.blank-play-selects { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 9px; }
+.blank-play-actions { display: flex; justify-content: flex-end; gap: 5px; margin-top: 10px; }
+
+.template-menu .blank-play-actions button {
+  width: auto;
+  padding: 7px 9px;
+  border: 1px solid #353a34;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.template-menu .blank-play-actions .blank-play-create {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #090b09;
+}
+
+.template-menu .blank-play-actions .blank-play-create:hover { background: #ff7b22; color: #090b09; }
+.template-menu .blank-play-actions .blank-play-create:disabled { cursor: not-allowed; opacity: 0.38; }
 
 .toolbar {
   position: relative;

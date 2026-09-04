@@ -1,12 +1,29 @@
-import { Copy, Plus, Trash2 } from "lucide-react";
+import { Copy, FilePlus2, Plus, Trash2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-import { PLAY_TEMPLATES } from "../data/templates";
+import { type FormEvent, useState } from "react";
+import { BLANK_FORMATIONS, PERSONNEL_OPTIONS, PLAY_TEMPLATES } from "../data/templates";
 import { useEditorStore } from "../store/editorStore";
 
 export function PlayRail() {
   const { agentProposal, playbook, dispatch } = useEditorStore();
   const [creating, setCreating] = useState(false);
+  const [creatingBlank, setCreatingBlank] = useState(false);
+  const [blankName, setBlankName] = useState("Untitled Play");
+  const [blankFormation, setBlankFormation] = useState<(typeof BLANK_FORMATIONS)[number]>("Pistol");
+  const [blankPersonnel, setBlankPersonnel] = useState<(typeof PERSONNEL_OPTIONS)[number]>("11 personnel");
+
+  const createBlankPlay = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch({
+      type: "play.createBlank",
+      name: blankName,
+      formation: blankFormation,
+      personnel: blankPersonnel,
+    });
+    setCreating(false);
+    setCreatingBlank(false);
+    setBlankName("Untitled Play");
+  };
 
   return (
     <aside className="play-rail" aria-label="Playbook">
@@ -58,7 +75,50 @@ export function PlayRail() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -8 }}
           >
-            <div className="template-menu-label">START FROM A CONCEPT</div>
+            <div className="template-menu-label">START FROM SCRATCH</div>
+            {!creatingBlank ? (
+              <button className="blank-concept-trigger" onClick={() => setCreatingBlank(true)}>
+                <span className="blank-concept-name"><FilePlus2 size={15} /> Blank Concept</span>
+                <small>11 ON 11 · NO ASSIGNMENTS</small>
+              </button>
+            ) : (
+              <form className="blank-play-form" onSubmit={createBlankPlay}>
+                <label>
+                  PLAY NAME
+                  <input
+                    autoFocus
+                    value={blankName}
+                    maxLength={60}
+                    onChange={(event) => setBlankName(event.target.value)}
+                  />
+                </label>
+                <div className="blank-play-selects">
+                  <label>
+                    FORMATION
+                    <select
+                      value={blankFormation}
+                      onChange={(event) => setBlankFormation(event.target.value as (typeof BLANK_FORMATIONS)[number])}
+                    >
+                      {BLANK_FORMATIONS.map((formation) => <option key={formation}>{formation}</option>)}
+                    </select>
+                  </label>
+                  <label>
+                    PERSONNEL
+                    <select
+                      value={blankPersonnel}
+                      onChange={(event) => setBlankPersonnel(event.target.value as (typeof PERSONNEL_OPTIONS)[number])}
+                    >
+                      {PERSONNEL_OPTIONS.map((personnel) => <option key={personnel}>{personnel}</option>)}
+                    </select>
+                  </label>
+                </div>
+                <div className="blank-play-actions">
+                  <button type="button" onClick={() => setCreatingBlank(false)}>CANCEL</button>
+                  <button className="blank-play-create" type="submit" disabled={!blankName.trim()}>CREATE PLAY</button>
+                </div>
+              </form>
+            )}
+            <div className="template-menu-divider"><span>OR START FROM A CONCEPT</span></div>
             {PLAY_TEMPLATES.map((template) => (
               <button
                 key={template.id}
