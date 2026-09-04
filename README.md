@@ -76,7 +76,7 @@ npm run test:sites
 
 Tests cover deterministic geometry, landmark assumptions, findings, strict proposal validation, stale revisions, preview immutability, atomic commit/undo, variations, bounded outputs, all seven registrations, annotations, cleanup, and direct tool execution.
 
-## Demo script — under three minutes
+## Try the WebMCP workflow
 
 1. Open **Pistol Counter** and play through the multi-color routes and dot-trail timeline.
 2. Ask: “Audit Pistol Counter for what can kill it to the right. Show me the worst moment but don’t change the play.” The agent analyzes, focuses **#52**, and the field scrubs to the danger window.
