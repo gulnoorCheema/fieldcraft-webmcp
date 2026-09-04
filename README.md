@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open the printed URL at 1280 px or wider. Fieldcraft starts on **Pistol Counter** with guard **#66** selected at the **HANDOFF** phase. In a browser with WebMCP enabled, the header reports `SITE TOOLS · 7 READY`.
+Open the printed URL at 1024 px or wider. Fieldcraft starts on **Pistol Counter** with guard **#66** selected at the **HANDOFF** phase. In a browser with WebMCP enabled, the header reports `SITE TOOLS · 7 READY`.
 
 ## Architecture
 
