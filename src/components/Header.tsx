@@ -77,7 +77,7 @@ export function Header({ onExportPng }: HeaderProps) {
       </button>
       <div className="header-divider" />
       <div className="export-wrap">
-        <button className="export-button" onClick={() => setExportOpen((value) => !value)}>
+        <button className="export-button" onClick={() => setExportOpen((value) => !value)} aria-label="Export playbook">
           <Share2 size={18} strokeWidth={1.5} />
           <span>EXPORT</span>
           <ChevronDown size={12} />

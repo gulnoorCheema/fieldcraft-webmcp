@@ -1,6 +1,6 @@
 import { Copy, FilePlus2, Plus, Trash2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { BLANK_FORMATIONS, PERSONNEL_OPTIONS, PLAY_TEMPLATES } from "../data/templates";
 import { useEditorStore } from "../store/editorStore";
 
@@ -11,6 +11,11 @@ export function PlayRail() {
   const [blankName, setBlankName] = useState("Untitled Play");
   const [blankFormation, setBlankFormation] = useState<(typeof BLANK_FORMATIONS)[number]>("Pistol");
   const [blankPersonnel, setBlankPersonnel] = useState<(typeof PERSONNEL_OPTIONS)[number]>("11 personnel");
+  const activePlayRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    activePlayRef.current?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [playbook.selectedPlayId]);
 
   const createBlankPlay = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,7 +37,11 @@ export function PlayRail() {
         {playbook.plays.map((play, index) => {
           const active = play.id === playbook.selectedPlayId;
           return (
-            <div className={`rail-play-row${active ? " active" : ""}`} key={play.id}>
+            <div
+              ref={active ? activePlayRef : undefined}
+              className={`rail-play-row${active ? " active" : ""}`}
+              key={play.id}
+            >
               <button
                 className={`rail-play${active ? " active" : ""}`}
                 onClick={() => dispatch({ type: "play.select", playId: play.id })}

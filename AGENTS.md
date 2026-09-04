@@ -14,4 +14,6 @@ The Coach Review action row must remain fully visible at every supported viewpor
 
 Fieldcraft must remain usable at tablet-width viewports down to 768px. Below 1100px, reflow the timeline and inspector vertically rather than compressing the tactical field or clipping controls; visually verify normal, focus, and Coach Review states before deployment.
 
+Fieldcraft must also remain fully functional on phone-width screens down to 320px. On mobile, use horizontal play/tool strips and a vertically scrolling field, timeline, and inspector; never replace the editor with a desktop-required gate. Verify portrait and landscape layouts, menus, focus overlays, and Coach Review actions before deployment.
+
 The New Play flow must offer a Blank Concept path alongside the seeded concepts. A blank concept starts from a named formation and personnel package with all 11 offensive and 11 scout-defense players already positioned, but with no assignments.

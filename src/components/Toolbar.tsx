@@ -92,6 +92,7 @@ export function Toolbar() {
               className={`tool-button${activeTool === id ? " active" : ""}`}
               onClick={() => activateTool(id)}
               aria-pressed={activeTool === id}
+              aria-label={label}
               disabled={Boolean(agentProposal)}
             >
               <Icon size={17} strokeWidth={1.45} />
@@ -128,11 +129,11 @@ export function Toolbar() {
         ))}
       </div>
       <div className="tool-group utility-tools">
-        <button className={`tool-button${gridEnabled ? " enabled" : ""}`} onClick={toggleGrid} disabled={Boolean(agentProposal)}>
+        <button className={`tool-button${gridEnabled ? " enabled" : ""}`} onClick={toggleGrid} disabled={Boolean(agentProposal)} aria-label="Toggle grid">
           <Grid3X3 size={18} strokeWidth={1.45} />
           <span>GRID</span>
         </button>
-        <button className={`tool-button${measureEnabled ? " enabled" : ""}`} onClick={toggleMeasure} disabled={Boolean(agentProposal)}>
+        <button className={`tool-button${measureEnabled ? " enabled" : ""}`} onClick={toggleMeasure} disabled={Boolean(agentProposal)} aria-label="Toggle measurement">
           <Ruler size={18} strokeWidth={1.45} />
           <span>MEASURE</span>
         </button>

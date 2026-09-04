@@ -256,7 +256,7 @@ export function App() {
       <div className="desktop-gate">
         <span>FIELDCRAFT / DESKTOP WORKSPACE</span>
         <h1>Bring this playbook to a larger screen.</h1>
-        <p>The tactical editor needs at least 768 pixels of horizontal room.</p>
+        <p>Open Fieldcraft in a modern browser to design and review plays.</p>
       </div>
     </>
   );

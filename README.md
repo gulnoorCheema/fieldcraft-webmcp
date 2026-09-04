@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open the printed URL at 768 px or wider. Below 1100 px, Fieldcraft preserves the tactical field and stacks the timeline and inspector into a compact review deck. It starts on **Pistol Counter** with guard **#66** selected at the **HANDOFF** phase. In a browser with WebMCP enabled, the header reports `SITE TOOLS · 7 READY`.
+Open the printed URL in a modern browser. Fieldcraft scales from phones to wide desktop workspaces: mobile uses a horizontally scrollable play strip and tool bar, while screens below 1100 px stack the timeline and inspector beneath the field. It starts on **Pistol Counter** with guard **#66** selected at the **HANDOFF** phase. In a browser with WebMCP enabled, the header reports `SITE TOOLS · 7 READY`.
 
 ## Architecture
 
