@@ -84,10 +84,6 @@ Tests cover deterministic geometry, landmark assumptions, findings, strict propo
 4. Ask: “Yes, apply it.” The agent commits exactly once. Undo shows that the whole repair is one editor action.
 5. Ask: “Create a variation with a different backside route.” Review and apply the renamed variation; the original remains unchanged.
 
-## Hackathon extension disclosure
-
-Fieldcraft’s human-operated editor and visual play-design surface were built first. The WebMCP submission extension adds the deterministic spatial engine, finding overlays, coach-review workflow, proposal validation, atomic agent command, seven imperative site tools, and the seeded demo scenario. The project remains useful when site tools are unavailable.
-
 The bundled turf and fonts have no runtime dependency on an external image or font service.
 
 ## License
