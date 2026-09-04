@@ -12,4 +12,6 @@ The WebMCP layer must remain a shared human-agent workspace, not an embedded cha
 
 The Coach Review action row must remain fully visible at every supported viewport and with the maximum proposal size. Let the change list scroll or condense before allowing Discard or Apply to clip below the workspace.
 
+Fieldcraft must remain usable at tablet-width viewports down to 768px. Below 1100px, reflow the timeline and inspector vertically rather than compressing the tactical field or clipping controls; visually verify normal, focus, and Coach Review states before deployment.
+
 The New Play flow must offer a Blank Concept path alongside the seeded concepts. A blank concept starts from a named formation and personnel package with all 11 offensive and 11 scout-defense players already positioned, but with no assignments.
